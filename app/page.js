@@ -87,7 +87,15 @@ export default function Home() {
             <div>
               Classement: <strong>{r.classement || "?"}</strong>
               {r.classement_type ? ` (${r.classement_type})` : ""}
+              {r.categorie && (
+                <span style={{ marginLeft: 6, color: "#666" }}>
+                  ~ {r.categorie} estime
+                </span>
+              )}
             </div>
+            {r.categorie_source && (
+              <div style={{ color: "#999", fontSize: "0.75rem" }}>{r.categorie_source}</div>
+            )}
             {r.club && <div style={{ color: "#555", fontSize: "0.9rem" }}>{r.club}</div>}
           </div>
         ))}
