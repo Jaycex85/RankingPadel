@@ -1,6 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import styles from "./page.module.css";
+
+function CourtMark() {
+  // Petit trait de lignes de court, en clin d'oeil au double service line du padel.
+  return (
+    <svg className={styles["court-mark"]} viewBox="0 0 60 40" fill="none" aria-hidden="true">
+      <rect x="1" y="1" width="58" height="38" rx="3" stroke="var(--ball-lime)" strokeWidth="2" />
+      <line x1="30" y1="1" x2="30" y2="39" stroke="var(--ball-lime)" strokeWidth="1.5" />
+      <line x1="1" y1="14" x2="59" y2="14" stroke="var(--ball-lime)" strokeWidth="1.5" opacity="0.6" />
+    </svg>
+  );
+}
+
+function federationLabel(code) {
+  if (code === "AFP") return "AFP";
+  if (code === "PWB") return "PWB / AFT padel";
+  if (code === "Tennis Vlaanderen") return "Tennis Vlaanderen";
+  return code;
+}
 
 export default function Home() {
   const [nom, setNom] = useState("");
@@ -8,6 +27,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [alerte, setAlerte] = useState(null);
   const [searched, setSearched] = useState(false);
 
   async function handleSearch(e) {
@@ -23,83 +43,117 @@ export default function Home() {
       const data = await res.json();
       setResults(data.results || []);
       setErrors(data.errors || []);
+      setAlerte(data.alerte || null);
     } catch (err) {
       setResults([]);
       setErrors([{ federation: "global", message: "Erreur reseau" }]);
+      setAlerte(null);
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <main style={{ maxWidth: 640, margin: "0 auto", padding: "2rem 1rem", fontFamily: "system-ui, sans-serif" }}>
-      <h1 style={{ fontSize: "1.5rem", marginBottom: "0.25rem" }}>RankingPadel</h1>
-      <p style={{ color: "#555", marginBottom: "1.5rem" }}>
-        Verification du classement d'un joueur dans les 3 federations belges de padel.
-      </p>
+    <main className={styles.main}>
+      <header className={styles.header}>
+        <CourtMark />
+        <h1 className={styles.title}>RankingPadel</h1>
+        <p className={styles.tagline}>
+          Cherche un joueur par nom et prenom, on interroge les 3 federations belges
+          de padel en meme temps et on signale les ecarts de niveau entre elles.
+        </p>
+      </header>
 
-      <form onSubmit={handleSearch} style={{ display: "flex", gap: "0.5rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
-        <input
-          type="text"
-          placeholder="Nom"
-          value={nom}
-          onChange={(e) => setNom(e.target.value)}
-          style={{ flex: 1, minWidth: 120, padding: "0.5rem" }}
-        />
-        <input
-          type="text"
-          placeholder="Prenom"
-          value={prenom}
-          onChange={(e) => setPrenom(e.target.value)}
-          style={{ flex: 1, minWidth: 120, padding: "0.5rem" }}
-        />
-        <button type="submit" disabled={loading} style={{ padding: "0.5rem 1rem" }}>
-          {loading ? "Recherche..." : "Rechercher"}
-        </button>
+      <form onSubmit={handleSearch} className={styles.searchPanel}>
+        <div className={styles.form}>
+          <div className={styles.field}>
+            <label htmlFor="nom">Nom</label>
+            <input
+              id="nom"
+              type="text"
+              placeholder="Cruits"
+              value={nom}
+              onChange={(e) => setNom(e.target.value)}
+            />
+          </div>
+          <div className={styles.field}>
+            <label htmlFor="prenom">Prenom</label>
+            <input
+              id="prenom"
+              type="text"
+              placeholder="Johan"
+              value={prenom}
+              onChange={(e) => setPrenom(e.target.value)}
+            />
+          </div>
+          <button type="submit" className={styles.submit} disabled={loading}>
+            {loading ? "Recherche..." : "Rechercher"}
+          </button>
+        </div>
       </form>
 
-      {searched && !loading && results.length === 0 && errors.length === 0 && (
-        <p>Aucun resultat trouve.</p>
+      {alerte && (
+        <div className={styles.alert}>
+          <span className={styles.alertDot} aria-hidden="true" />
+          <div>
+            <p className={styles.alertTitle}>Ecart de niveau detecte</p>
+            <p className={styles.alertBody}>
+              Classement nettement plus haut en {federationLabel(alerte.federation_haute)} que
+              en {federationLabel(alerte.federation_basse)} ({alerte.ecart_paliers} paliers
+              d&apos;ecart). A verifier avant validation d&apos;une inscription en serie basse.
+            </p>
+          </div>
+        </div>
       )}
 
       {errors.length > 0 && (
-        <div style={{ marginBottom: "1rem", color: "#a33" }}>
+        <div>
           {errors.map((err, i) => (
-            <div key={i}>{err.federation}: indisponible ({err.message})</div>
+            <div key={i} className={styles.errorLine}>
+              {federationLabel(err.federation)} indisponible pour cette recherche ({err.message})
+            </div>
           ))}
         </div>
       )}
 
-      <div style={{ display: "grid", gap: "0.75rem" }}>
+      {searched && !loading && results.length === 0 && errors.length === 0 && (
+        <p className={styles.emptyState}>
+          Aucun joueur trouve avec ce nom, dans aucune des 3 federations.
+        </p>
+      )}
+
+      <div className={styles.results}>
         {results.map((r, i) => (
-          <div
-            key={i}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: 8,
-              padding: "0.75rem 1rem",
-            }}
-          >
-            <div style={{ fontSize: "0.75rem", textTransform: "uppercase", color: "#888" }}>
-              {r.federation}
+          <div key={i} className={styles.card}>
+            <div className={styles.cardFederation}>{federationLabel(r.federation)}</div>
+            <div className={styles.cardName}>{r.nom_complet}</div>
+
+            <div className={styles.scoreRow}>
+              <span className={styles.scoreValue}>{r.classement || "?"}</span>
+              {r.classement_type && <span className={styles.scoreType}>{r.classement_type}</span>}
             </div>
-            <div style={{ fontWeight: 600 }}>{r.nom_complet}</div>
-            <div>
-              Classement: <strong>{r.classement || "?"}</strong>
-              {r.classement_type ? ` (${r.classement_type})` : ""}
-              {r.categorie && (
-                <span style={{ marginLeft: 6, color: "#666" }}>
-                  ~ {r.categorie} Catégorie minimale autorisée
-                </span>
-              )}
-            </div>
-            {r.categorie_source && (
-              <div style={{ color: "#999", fontSize: "0.75rem" }}>{r.categorie_source}</div>
+
+            {r.categorie && (
+              <div className={styles.categoryBadge}>
+                Min Category <strong>{r.categorie}</strong>
+              </div>
             )}
-            {r.club && <div style={{ color: "#555", fontSize: "0.9rem" }}>{r.club}</div>}
+
+            <div className={styles.cardMeta}>
+              {[r.club, r.sexe].filter(Boolean).join(" · ") || "Club et sexe non communiques"}
+            </div>
+
+            {r.categorie_source && <div className={styles.cardSource}>{r.categorie_source}</div>}
           </div>
         ))}
       </div>
+
+      <p className={styles.footerNote}>
+        Les classements affiches proviennent des pages publiques de recherche de chaque
+        federation. La categorie AFP est estimee a partir des points Elo bruts et des
+        derniers paliers connus (Cut 2026) : verifie toujours un cas limite directement
+        sur le site de la federation avant une decision d&apos;arbitrage.
+      </p>
     </main>
   );
 }

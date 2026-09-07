@@ -1,0 +1,270 @@
+.main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+.header {
+  margin-bottom: 2.25rem;
+}
+
+.court-mark {
+  width: 34px;
+  height: 22px;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+  color: var(--line-white);
+}
+
+.tagline {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* --- Search panel, styled after a padel service box --- */
+.searchPanel {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.searchPanel::before,
+.searchPanel::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--ball-lime);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.searchPanel::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 6px 0 0 0;
+}
+
+.searchPanel::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+  border-radius: 0 0 6px 0;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.field {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.field input {
+  background: rgba(8, 36, 51, 0.6);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 0.65rem 0.75rem;
+  color: var(--line-white);
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+
+.field input::placeholder {
+  color: rgba(143, 176, 189, 0.6);
+}
+
+.field input:focus {
+  border-color: var(--ball-lime);
+}
+
+.submit {
+  align-self: flex-end;
+  background: var(--ball-lime);
+  color: var(--ball-lime-ink);
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* --- Mismatch alert --- */
+.alert {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  background: rgba(215, 242, 56, 0.08);
+  border: 1px solid rgba(215, 242, 56, 0.4);
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.alertDot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ball-lime);
+  margin-top: 0.4rem;
+}
+
+.alertTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 0.2rem;
+  color: var(--line-white);
+}
+
+.alertBody {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* --- Empty / error states --- */
+.emptyState {
+  color: var(--muted);
+  padding: 1rem 0;
+}
+
+.errorLine {
+  color: var(--danger);
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+
+/* --- Results --- */
+.results {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+}
+
+.cardFederation {
+  font-size: 0.8rem;
+  color: var(--sand);
+  margin-bottom: 0.5rem;
+}
+
+.cardName {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--line-white);
+}
+
+.scoreRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.35rem;
+}
+
+.scoreValue {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--line-white);
+}
+
+.scoreType {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  background: rgba(232, 217, 187, 0.12);
+  border: 1px solid rgba(232, 217, 187, 0.35);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.8rem;
+  color: var(--sand);
+  margin-bottom: 0.5rem;
+}
+
+.categoryBadge strong {
+  font-family: var(--font-display);
+  color: var(--line-white);
+  font-variant-numeric: tabular-nums;
+}
+
+.cardMeta {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.cardSource {
+  color: rgba(143, 176, 189, 0.7);
+  font-size: 0.72rem;
+  margin-top: 0.5rem;
+}
+
+.footerNote {
+  margin-top: 2.5rem;
+  color: rgba(143, 176, 189, 0.7);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+@media (max-width: 480px) {
+  .submit {
+    width: 100%;
+    align-self: stretch;
+  }
+}

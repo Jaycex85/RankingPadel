@@ -1,0 +1,56 @@
+:root {
+  --court-blue: #0f3a52;
+  --court-blue-deep: #082433;
+  --panel: #123c54;
+  --panel-border: #1f5470;
+  --line-white: #f4f7f2;
+  --muted: #8fb0bd;
+  --ball-lime: #d7f238;
+  --ball-lime-ink: #12210a;
+  --sand: #e8d9bb;
+  --ink: #0b1f2a;
+  --danger: #ff8a65;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(120% 140% at 15% -10%, #164a67 0%, var(--court-blue) 45%, var(--court-blue-deep) 100%);
+  background-attachment: fixed;
+  color: var(--line-white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ball-lime);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--ball-lime);
+  color: var(--ball-lime-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
