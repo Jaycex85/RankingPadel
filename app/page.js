@@ -89,7 +89,7 @@ export default function Home() {
               {r.classement_type ? ` (${r.classement_type})` : ""}
               {r.categorie && (
                 <span style={{ marginLeft: 6, color: "#666" }}>
-                  ~ {r.categorie} estime
+                  ~ {r.categorie} Catégorie minimale autorisée
                 </span>
               )}
             </div>
