@@ -64,23 +64,23 @@ export default function Home() {
       <form onSubmit={handleSearch} className={styles.searchPanel}>
         <div className={styles.form}>
           <div className={styles.field}>
+            <label htmlFor="prenom">Prénom</label>
+            <input
+              id="prenom"
+              type="text"
+              placeholder="Prénom"
+              value={prenom}
+              onChange={(e) => setPrenom(e.target.value)}
+            />
+          </div>
+          <div className={styles.field}>
             <label htmlFor="nom">Nom</label>
             <input
               id="nom"
               type="text"
-              placeholder="Dupont"
+              placeholder="Nom"
               value={nom}
               onChange={(e) => setNom(e.target.value)}
-            />
-          </div>
-          <div className={styles.field}>
-            <label htmlFor="prenom">Prenom</label>
-            <input
-              id="prenom"
-              type="text"
-              placeholder="Alex"
-              value={prenom}
-              onChange={(e) => setPrenom(e.target.value)}
             />
           </div>
           <button type="submit" className={styles.submit} disabled={loading}>
