@@ -179,10 +179,13 @@
 }
 
 .card {
+  position: relative;
   background: var(--panel);
   border: 1px solid var(--panel-border);
   border-radius: 12px;
   padding: 1.15rem 1.25rem;
+  padding-right: 3rem;
+  padding-bottom: 2.75rem;
 }
 
 .cardFederation {
@@ -250,17 +253,24 @@
   margin-top: 0.5rem;
 }
 
-.cardLink {
-  display: inline-block;
-  margin-top: 0.65rem;
+.cardLinkIcon {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   color: var(--ball-lime);
-  font-size: 0.85rem;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
+  opacity: 0.85;
+  transition: opacity 0.15s ease, background 0.15s ease;
 }
 
-.cardLink:hover {
-  border-bottom-color: var(--ball-lime);
+.cardLinkIcon:hover {
+  opacity: 1;
+  background: rgba(215, 242, 56, 0.12);
 }
 
 .footerNote {

@@ -133,8 +133,20 @@ export default function Home() {
             {r.categorie_source && <div className={styles.cardSource}>{r.categorie_source}</div>}
 
             {r.lien && (
-              <a href={r.lien} target="_blank" rel="noopener noreferrer" className={styles.cardLink}>
-                Voir la fiche sur le site de la federation
+              <a
+                href={r.lien}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.cardLinkIcon}
+                aria-label={`Voir la fiche de ${r.nom_complet} sur le site de la federation`}
+                title="Voir la fiche sur le site de la federation"
+              >
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none">
+                  <rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" strokeWidth="1.6" />
+                  <line x1="8" y1="8" x2="16" y2="8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                  <line x1="8" y1="12" x2="16" y2="12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                  <line x1="8" y1="16" x2="12" y2="16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+                </svg>
               </a>
             )}
           </div>
