@@ -175,7 +175,7 @@
 .results {
   display: grid;
   gap: 0.9rem;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .card {
@@ -225,20 +225,25 @@
 .categoryBadge {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.4rem;
+  gap: 0.35rem;
   background: rgba(232, 217, 187, 0.12);
   border: 1px solid rgba(232, 217, 187, 0.35);
   border-radius: 999px;
   padding: 0.2rem 0.65rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--sand);
   margin-bottom: 0.5rem;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .categoryBadge strong {
   font-family: var(--font-display);
   color: var(--line-white);
   font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
 }
 
 .cardMeta {
