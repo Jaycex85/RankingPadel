@@ -254,6 +254,19 @@
   margin-top: 0.5rem;
 }
 
+.cardLink {
+  display: inline-block;
+  margin-top: 0.65rem;
+  color: var(--ball-lime);
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.cardLink:hover {
+  border-bottom-color: var(--ball-lime);
+}
+
 .footerNote {
   margin-top: 2.5rem;
   color: rgba(143, 176, 189, 0.7);

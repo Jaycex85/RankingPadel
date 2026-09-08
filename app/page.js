@@ -141,6 +141,12 @@ export default function Home() {
             </div>
 
             {r.categorie_source && <div className={styles.cardSource}>{r.categorie_source}</div>}
+
+            {r.lien && (
+              <a href={r.lien} target="_blank" rel="noopener noreferrer" className={styles.cardLink}>
+                Voir la fiche sur le site de la federation
+              </a>
+            )}
           </div>
         ))}
       </div>
