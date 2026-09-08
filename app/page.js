@@ -153,8 +153,11 @@ export default function Home() {
 
       <p className={styles.footerNote}>
         Les classements affiches proviennent des pages publiques de recherche de chaque
-        federation. * La categorie AFP est estimee a partir des points Elo bruts et de la
-        Table de Cuts AFP (2026).
+        federation.
+      </p>
+      <p className={styles.footerNote}>
+        * La categorie AFP est estimee a partir des points Elo bruts et de la Table de Cuts
+        AFP (2026).
       </p>
 
       <a href="mailto:cruits@gmail.com" className={styles.signature}>
