@@ -9,14 +9,14 @@
 }
 
 .bannerPlate {
-  display: inline-block;
-  margin: 0 0 1rem;
+  display: block;
+  margin: 0 0 1.1rem;
   line-height: 0;
 }
 
 .bannerImg {
   display: block;
-  height: 48px;
+  height: clamp(56px, 9vw, 84px);
   width: auto;
 }
 
