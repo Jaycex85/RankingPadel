@@ -19,7 +19,13 @@ function tierIndex(value) {
 }
 
 function extractNiveau(result) {
-  const source = result.categorie || result.classement || "";
+  // Pour l'AFP, "classement" est un nombre de points Elo brut (ex: 1235), pas
+  // un code de palier : on ne doit JAMAIS retomber dessus pour la comparaison
+  // de niveaux, sous peine de lire "1235" comme si c'etait "palier 1000+".
+  // On utilise uniquement "categorie" (deja convertie) pour l'AFP ; pour les
+  // 2 autres federations, "classement" est deja un code de palier (ex: "P300").
+  const source = result.classement_type === "ELO" ? result.categorie : (result.categorie || result.classement);
+  if (!source) return null;
   const match = String(source).match(/(\d+)/);
   return match ? Number(match[1]) : null;
 }
