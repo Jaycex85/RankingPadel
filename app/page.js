@@ -58,10 +58,7 @@ export default function Home() {
       <header className={styles.header}>
         <CourtMark />
         <h1 className={styles.title}>RankingPadel</h1>
-        <p className={styles.tagline}>
-          Cherche un joueur par nom et prenom, on interroge les 3 federations belges
-          de padel en meme temps et on signale les ecarts de niveau entre elles.
-        </p>
+        <p className={styles.tagline}>Classements dans les trois federations</p>
       </header>
 
       <form onSubmit={handleSearch} className={styles.searchPanel}>
@@ -71,7 +68,7 @@ export default function Home() {
             <input
               id="nom"
               type="text"
-              placeholder="Cruits"
+              placeholder="Dupont"
               value={nom}
               onChange={(e) => setNom(e.target.value)}
             />
@@ -81,7 +78,7 @@ export default function Home() {
             <input
               id="prenom"
               type="text"
-              placeholder="Johan"
+              placeholder="Alex"
               value={prenom}
               onChange={(e) => setPrenom(e.target.value)}
             />
@@ -151,8 +148,7 @@ export default function Home() {
       <p className={styles.footerNote}>
         Les classements affiches proviennent des pages publiques de recherche de chaque
         federation. La categorie AFP est estimee a partir des points Elo bruts et des
-        derniers paliers connus (Cut 2026) : verifie toujours un cas limite directement
-        sur le site de la federation avant une decision d&apos;arbitrage.
+        derniers paliers connus (Cut 2026).
       </p>
     </main>
   );
