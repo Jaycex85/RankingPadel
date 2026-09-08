@@ -10,9 +10,6 @@
 
 .bannerPlate {
   display: inline-block;
-  background: var(--line-white);
-  border-radius: 14px;
-  padding: 0.85rem 1.4rem;
   margin: 0 0 1rem;
   line-height: 0;
 }
