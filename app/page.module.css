@@ -247,12 +247,6 @@
   line-height: 1.5;
 }
 
-.cardSource {
-  color: rgba(143, 176, 189, 0.7);
-  font-size: 0.72rem;
-  margin-top: 0.5rem;
-}
-
 .cardLinkIcon {
   position: absolute;
   right: 1.1rem;

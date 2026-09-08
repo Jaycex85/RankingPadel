@@ -122,15 +122,13 @@ export default function Home() {
 
             {r.categorie && (
               <div className={styles.categoryBadge}>
-                Catégorie minimale autorisée <strong>{r.categorie}</strong>
+                Catégorie minimale autorisée* <strong>{r.categorie}</strong>
               </div>
             )}
 
             <div className={styles.cardMeta}>
               {[r.club, r.sexe].filter(Boolean).join(" · ") || "Club et sexe non communiques"}
             </div>
-
-            {r.categorie_source && <div className={styles.cardSource}>{r.categorie_source}</div>}
 
             {r.lien && (
               <a
@@ -155,8 +153,8 @@ export default function Home() {
 
       <p className={styles.footerNote}>
         Les classements affiches proviennent des pages publiques de recherche de chaque
-        federation. La categorie AFP est estimee a partir des points Elo bruts et des
-        derniers paliers connus (Cut 2026).
+        federation. * La categorie AFP est estimee a partir des points Elo bruts et de la
+        Table de Cuts AFP (2026).
       </p>
 
       <a href="mailto:cruits@gmail.com" className={styles.signature}>
