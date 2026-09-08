@@ -3,17 +3,6 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 
-function CourtMark() {
-  // Petit trait de lignes de court, en clin d'oeil au double service line du padel.
-  return (
-    <svg className={styles["court-mark"]} viewBox="0 0 60 40" fill="none" aria-hidden="true">
-      <rect x="1" y="1" width="58" height="38" rx="3" stroke="var(--ball-lime)" strokeWidth="2" />
-      <line x1="30" y1="1" x2="30" y2="39" stroke="var(--ball-lime)" strokeWidth="1.5" />
-      <line x1="1" y1="14" x2="59" y2="14" stroke="var(--ball-lime)" strokeWidth="1.5" opacity="0.6" />
-    </svg>
-  );
-}
-
 function federationLabel(code) {
   if (code === "AFP") return "AFP";
   if (code === "PWB") return "PWB / AFT padel";
@@ -56,8 +45,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <header className={styles.header}>
-        <CourtMark />
-        <h1 className={styles.title}>RankingPadel</h1>
+        <h1 className={styles.bannerPlate}>
+          <img src="/banner.svg" alt="RankingPadel" className={styles.bannerImg} />
+        </h1>
         <p className={styles.tagline}>Classements dans les trois federations</p>
       </header>
 
@@ -156,6 +146,14 @@ export default function Home() {
         federation. La categorie AFP est estimee a partir des points Elo bruts et des
         derniers paliers connus (Cut 2026).
       </p>
+
+      <a href="mailto:cruits@gmail.com" className={styles.signature}>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none">
+          <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M3 6l9 7 9-7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Par Cruits Johan
+      </a>
     </main>
   );
 }

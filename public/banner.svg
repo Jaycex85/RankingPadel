@@ -1,0 +1,38 @@
+<svg
+ xmlns="http://www.w3.org/2000/svg"
+ width="1200"
+ height="280"
+ viewBox="0 0 1200 280"
+ role="img"
+ aria-labelledby="title desc"
+>
+ <title id="title">RankingPadel</title>
+ <desc id="desc">
+ Logo RankingPadel avec trois colonnes montantes centrees au-dessus du P
+ </desc>
+
+ <!-- Fond transparent -->
+
+ <!-- Nom de l'application -->
+ <g
+ font-family="Inter, 'Segoe UI', Arial, sans-serif"
+ font-size="124"
+ font-weight="750"
+ letter-spacing="-6"
+ >
+ <text x="70" y="210" fill="#0B1220">Ranking</text>
+ <text x="526" y="210" fill="#C7F000">Padel</text>
+ </g>
+
+ <!--
+ Symbole de classement :
+ - centre au-dessus du P
+ - remonte
+ - espace visuel conserve avec la lettre
+ -->
+ <g fill="#C7F000">
+ <rect x="535" y="83" width="16" height="20" rx="5"/>
+ <rect x="558" y="61" width="16" height="42" rx="5"/>
+ <rect x="581" y="34" width="16" height="69" rx="5"/>
+ </g>
+</svg>
