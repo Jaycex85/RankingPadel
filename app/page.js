@@ -97,7 +97,7 @@ export default function Home() {
             <p className={styles.alertBody}>
               Classement nettement plus haut en {federationLabel(alerte.federation_haute)} que
               en {federationLabel(alerte.federation_basse)} ({alerte.ecart_paliers} paliers
-              d&apos;ecart). A verifier avant validation d&apos;une inscription en serie basse.
+              d&apos;ecart).
             </p>
           </div>
         </div>
