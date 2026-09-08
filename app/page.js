@@ -135,7 +135,7 @@ export default function Home() {
 
             {r.categorie && (
               <div className={styles.categoryBadge}>
-                Min Category <strong>{r.categorie}</strong>
+                Catégorie minimale autorisée <strong>{r.categorie}</strong>
               </div>
             )}
 
